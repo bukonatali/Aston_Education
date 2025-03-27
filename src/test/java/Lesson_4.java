@@ -1,4 +1,4 @@
-public class Lesson_1 {
+public class Lesson_4 {
 
     public static void main(String[] args) {
     printThreeWords1();
@@ -53,14 +53,14 @@ public class Lesson_1 {
     }
 
     public static void printColor3() {
-        int value = 51;
+        int value = -12;
         if (value <= 0) {
             System.out.println("Красный");
         }
-        if (value <= 100) {
+        else if (value <= 100) {
             System.out.println("Желтый");
         }
-        if (value > 100) {
+        else {
             System.out.println("Зеленый");
         }
     }
