@@ -2,11 +2,11 @@ package org.example.Lesson_6;
 
 public class Main {
     public static void main(String[] args) {
-        Goods goods = new Goods("Велосипед Cube Aim EX 29 L",
-                2024, "Cube",
+        Product product1 = new Product("Велосипед Cube Aim EX 29 L",
+                "2024", "Cube",
                 "Pending System GmbH&Co. Germany",
                 3700, true);
-        goods.printInfo();
+        product1.printProductInfo();
         System.out.println("\n");
 
 
