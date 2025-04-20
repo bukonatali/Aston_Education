@@ -1,6 +1,5 @@
 package org.example.Lesson_11_2;
 
-// Класс, представляющий треугольник
 class Triangle implements GeometricFigure {
     private double side1;
     private double side2;
