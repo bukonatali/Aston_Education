@@ -1,6 +1,6 @@
 package org.example.Lesson_11_2;
 
-// Интерфейс для геометрических фигур
+// Интерфейс фигур
 interface GeometricFigure {
     double calculatePerimeter();
 
