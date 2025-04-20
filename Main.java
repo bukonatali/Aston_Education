@@ -1,13 +1,61 @@
-package org.example.Lesson_11_2;
+package org.example.Lesson_11_1;
 
 public class Main {
     public static void main(String[] args) {
-        Circle circle = new Circle(5, "Red", "Black");
-        Rectangle rectangle = new Rectangle(4, 6, "Blue", "Green");
-        Triangle triangle = new Triangle(3, 4, 5, "Yellow", "Purple");
+        Cat kokos = new Cat("Kокос");
+        Cat murzik = new Cat("Мурзик");
 
-        System.out.println("Круг - Периметр: " + circle.calculatePerimeter() + "; Площадь: " + circle.calculateArea() + "; Цвет заливки: " + circle.getFillColor() + "; Цвет границы: " + circle.getBorderColor());
-        System.out.println("Прямоугольник - Периметр: " + rectangle.calculatePerimeter() + "; Площадь: " + rectangle.calculateArea() + "; Цвет заливки: " + rectangle.getFillColor() + "; Цвет границы: " + rectangle.getBorderColor());
-        System.out.println("Треугольник - Периметр: " + triangle.calculatePerimeter() + "; Площадь: " + triangle.calculateArea() + "; Цвет заливки: " + triangle.getFillColor() + "; Цвет границы: " + triangle.getBorderColor());
+        Dog beni = new Dog("Бэни");
+        Dog ron = new Dog("Рон");
+
+        kokos.run(150);  //
+        murzik.run(600);   //
+        kokos.swim(150);
+        murzik.swim(1);
+
+        System.out.println("\n");
+
+        beni.run(500);  //
+        ron.run(700);   //
+        beni.swim(15);
+        ron.swim(9);
+
+        System.out.println("\n");
+
+        System.out.println("Всего животных: " + Animal.getCount());
+        System.out.println("Всего собак: " + Dog.getCount());
+        System.out.println("Всего котов: " + Cat.getCount());
+
+        System.out.println("\n");
+
+
+        // Добавляем миски к котам
+
+        Cat[] cats = new Cat[3];
+        cats[0] = new Cat();
+        cats[1] = new Cat();
+        cats[2] = new Cat();
+
+        Bowl bowl = new Bowl(15);
+        System.out.println("В миске " + bowl.getFood() + " еды.");
+
+        //Корм котов
+        for (Cat cat : cats) {
+            cat.eat(bowl, 5); // Каждый кот хочет съесть 8 еды
+        }
+        System.out.println("В миске осталось " + bowl.getFood() + " еды.");
+
+        // Сытость котов
+        for (int i = 0; i < cats.length; i++) {
+            System.out.println("Кот " + (i + 1) + " сыт? " + cats[i].isSatiety());
+        }
+
+        // Добавить еду в миску
+        bowl.addFood(15);
     }
 }
+
+
+
+
+
