@@ -1,6 +1,6 @@
 package org.example.Lesson_11_1;
 
-public class Main {
+public class Lesson_Animal {
     public static void main(String[] args) {
         Cat kokos = new Cat("Kокос");
         Cat murzik = new Cat("Мурзик");

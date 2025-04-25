@@ -1,6 +1,6 @@
 package org.example.Lesson_11_1;
 
-class Animal {
+public class Animal {
     private static int count = 0;
     protected String name;
 

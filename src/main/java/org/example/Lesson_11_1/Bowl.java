@@ -30,3 +30,4 @@ class Bowl {
         System.out.println("В миску добавлено " + food + " еды. Теперь в миске " + this.food + " еды.");
     }
 }
+
