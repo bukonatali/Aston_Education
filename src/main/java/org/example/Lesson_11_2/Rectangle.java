@@ -1,6 +1,5 @@
 package org.example.Lesson_11_2;
 
-// Класс, представляющий прямоугольник
 class Rectangle implements GeometricFigure {
     private double width;
     private double height;

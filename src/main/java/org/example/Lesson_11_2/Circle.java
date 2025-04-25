@@ -1,6 +1,5 @@
 package org.example.Lesson_11_2;
 
-// Класс, представляющий круг
 class Circle implements GeometricFigure {
     private double radius;
     private String fillColor;
