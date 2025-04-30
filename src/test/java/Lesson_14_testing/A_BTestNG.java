@@ -2,7 +2,7 @@ package Lesson_14_testing;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
-import org.example.Lesson_14_testng.A_B;
+import org.example.Lesson_14_testing.A_B;
 
 public class A_BTestNG {
 

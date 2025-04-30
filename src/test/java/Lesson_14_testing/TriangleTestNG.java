@@ -1,5 +1,5 @@
 package Lesson_14_testing;
-import org.example.Lesson_14_testng.Triangle;
+import org.example.Lesson_14_testing.Triangle;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

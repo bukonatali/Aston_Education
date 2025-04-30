@@ -1,5 +1,5 @@
 package Lesson_14_testing;
-import org.example.Lesson_14_testng.Calculator;
+import org.example.Lesson_14_testing.Calculator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;

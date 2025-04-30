@@ -2,7 +2,7 @@ package Lesson_14_testing;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.example.Lesson_14_testng.MathUtils;
+import org.example.Lesson_14_testing.MathUtils;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
