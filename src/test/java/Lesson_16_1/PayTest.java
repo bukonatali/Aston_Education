@@ -1,4 +1,4 @@
-package Lesson_16;
+package Lesson_16_1;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-public class MtsByTest {
+public class PayTest {
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -31,7 +31,7 @@ public class MtsByTest {
     }
 
     @Test
-    public void testConnectionServicesPayment() {
+    public void testPayment() {
         driver.get("https://mts.by");
 
         // Принятие cookie на баннере
