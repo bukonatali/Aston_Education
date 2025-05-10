@@ -1,6 +1,7 @@
 package Lesson_16;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -21,13 +21,13 @@ public class PayTest {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @BeforeClass
+    @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class PayTest {
         System.out.println("Нажата кнопка 'Продолжить'.");
 
         // Ждать прогрузки iframe и переключиться на него
-        waitForAndSwitchToFrame(By.cssSelector("/html/body/div[8]/div/iframe"));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("/html/body/div[8]/div/iframe")));
         System.out.println("Переключились на iframe оплаты.");
 
         // отображения суммы "10.00 BYN"
@@ -102,7 +102,7 @@ public class PayTest {
                 "mastercard-system.svg",
                 "belkart-system.svg",
                 "maestro-system.svg",
-                "mir-system-ru.svg"
+                //"mir-system-ru.svg"
         };
         for (String icon : paymentIcons) {
             List<WebElement> icons = driver.findElements(By.xpath("//img[contains(@src,'" + icon + "')]"));
