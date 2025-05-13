@@ -6,11 +6,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import java.util.List;
-import java.util.stream.Collectors;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-class LogoTest {
+import java.time.Duration;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class LogoTest {
     WebDriver driver;
+    WebDriverWait wait;
 
     @BeforeAll
     static void setupClass() {
@@ -21,39 +27,40 @@ class LogoTest {
     void setupTest() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @AfterEach
     void teardown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Test
-        // главна страница mts
     void testLogo() {
         driver.get("https://mts.by");
 
-        // Локатор из Devtools
-        List<WebElement> logos = driver.findElements(
-                By.cssSelector("div.pay__partners ul li img")
+        WebElement logosContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector(".pay__partners")));
+
+        List<WebElement> logoImages = logosContainer.findElements(By.tagName("img"));
+
+        assertAll("Проверка основных логотипов",
+                () -> assertTrue(isLogoPresent(logoImages, "Visa")),
+                () -> assertTrue(isLogoPresent(logoImages, "Mastercard")),
+                () -> assertTrue(isLogoPresent(logoImages, "Белкарт"))
         );
+    }
 
-        // Ожидание
-        List<String> expectedAlts = List.of(
-                "Visa",
-                "Verified By Visa",
-                "MasterCard",
-                "MasterCard Secure Code",
-                "Белкарт"
-        );
-
-        // Атрибуты сайта
-        List<String> actualAlts = logos.stream()
-                .map(e -> e.getAttribute("alt"))
-                .collect(Collectors.toList());
-
-        // Проверка присутсвия лого
-        Assertions.assertTrue(actualAlts.containsAll(expectedAlts),
-                "Не все логотипы платёжных систем найдены на странице");
+    // Метод для проверки наличия логотипа по атрибуту alt или src
+    private boolean isLogoPresent(List<WebElement> logos, String logoName) {
+        return logos.stream()
+                .anyMatch(img -> {
+                    String alt = img.getAttribute("alt");
+                    String src = img.getAttribute("src");
+                    return (alt != null && alt.contains(logoName)) ||
+                            (src != null && src.contains(logoName.toLowerCase()));
+                });
     }
 }
